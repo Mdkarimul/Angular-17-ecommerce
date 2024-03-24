@@ -1,0 +1,31 @@
+.form-control,.form-select {
+    background-color: var(--bg-three);
+    box-shadow: none;
+}
+.submit {
+    background-color: var(--bg-four);
+    border: none;
+}
+.social_facebook,.social_google {
+   background-color: var(--bg-three);
+   color: var(--color-one);
+   transition: 0.5s;
+}
+.social_facebook:hover {
+    background-color: #2563EB;
+    color: var(--color-two);
+}
+.social_google:hover {
+    background-color: #EF4444;
+    color: var(--color-two);
+}
+.form-check-input {
+    border: 2px solid var(--color-one);
+    background-color: var(--bg-three);
+    padding: 5px;
+    cursor: pointer;
+    box-shadow: none;
+}
+.form-check-input:checked{
+    background-color: var(--bg-four);
+}
