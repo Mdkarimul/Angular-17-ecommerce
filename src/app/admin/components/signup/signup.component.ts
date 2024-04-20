@@ -56,6 +56,7 @@ export class SignupComponent {
     }else{
       
       ValidateForm.ValidateAllFormField(this.signupForm);
+      
     }
 
   }
