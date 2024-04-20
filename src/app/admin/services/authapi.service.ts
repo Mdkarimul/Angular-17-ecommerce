@@ -14,7 +14,7 @@ private url:string = 'http://localhost:3000/'
 
   post(data:UserType):Observable<unknown>{
     
-  return  this.http.post<UserType>(this.url+"signup",data);
+  return  this.http.post<UserType>(this.url+"users",data);
 
   }
 }

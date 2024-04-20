@@ -44,7 +44,15 @@ export class SignupComponent {
   
   submitForm(){
     if(this.signupForm.valid){
-      this.auth.post(this.signupForm.value as UserType);
+      this.auth.post(this.signupForm.value as UserType).subscribe({
+    next:(data)=>{
+      console.log(data);
+    } ,
+    error:(error)=>{
+    console.log(error);
+    }         
+        })
+    
     }else{
       
       ValidateForm.ValidateAllFormField(this.signupForm);
