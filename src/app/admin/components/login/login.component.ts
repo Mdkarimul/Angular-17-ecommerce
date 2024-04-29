@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import ValidateForm from '../../helpers/form-field-validation';
+import { AuthapiService } from '../../services/authapi.service';
+import { LoginType } from '../../types/auth-type';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,7 @@ import ValidateForm from '../../helpers/form-field-validation';
 })
 export class LoginComponent {
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder,private auth:AuthapiService){
 
   }
 
@@ -31,9 +33,15 @@ export class LoginComponent {
   }
 
   loginSubmit(){
-
     if(this.loginForm.valid){
-       console.log(this.loginForm.value);
+       this.auth.login(this.loginForm.value as LoginType).subscribe({
+        next:(data)=>{
+        console.log(data)
+        },
+        error:(error)=>{
+       console.log(error);
+        }
+       });
     }else{
       ValidateForm.ValidateAllFormField(this.loginForm);
     }

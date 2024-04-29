@@ -1,24 +1,33 @@
 .form-control,.form-select {
     background-color: var(--bg-three);
     box-shadow: none;
+    font-size: 15px;
 }
 .submit {
-    background-color: var(--bg-four);
-    border: none;
-}
-.social_facebook,.social_google {
-   background-color: var(--bg-three);
-   color: var(--color-one);
+   background-color: var(--bg-four);
+   color: var(--color-two);
    transition: 0.5s;
 }
-.social_facebook:hover {
-    background-color: #2563EB;
-    color: var(--color-two);
+.submit:hover {
+    filter: brightness(0.8);
+
 }
-.social_google:hover {
-    background-color: #EF4444;
-    color: var(--color-two);
+.social-facebook,.social-google {
+   color: var(--color-one);
 }
+.social-facebook i {
+    color: #1877F2;
+}
+.social-google i {
+    color: #f44251;
+}
+
+option {
+    font-size: 16px;
+}
+
+
+
 .form-check-input {
     border: 2px solid var(--color-one);
     background-color: var(--bg-three);

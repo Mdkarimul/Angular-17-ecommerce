@@ -12,7 +12,7 @@
     </div>
     <div class="col-md-6 rounded p-4">
 
-      <form [formGroup]="signupForm" (ngSubmit)="submitForm()">
+      <form [formGroup]="signupForm" (ngSubmit)="submitForm()" class="">
       <h2 class="fs-4">Sign up now</h2>
 
       <!-- full name -->
@@ -21,7 +21,7 @@
         <div class="col-sm-10">
           <input
             type="text"
-            class="form-control form-control-lg"
+            class="form-control form-control-lg rounded-1"
             id="fullname" formControlName="full_name"
             value=""
           />
@@ -44,7 +44,7 @@
         <div class="col-sm-10">
           <input
             type="email"
-            class="form-control form-control-lg"
+            class="form-control form-control-lg rounded-1"
             id="email" formControlName="email"
             value=""
           />
@@ -65,7 +65,7 @@
         <div class="col-sm-10">
           <input
             type="text"
-            class="form-control form-control-lg"
+            class="form-control form-control-lg rounded-1"
             id="fullname" formControlName="password"
             value=""
           />
@@ -88,10 +88,10 @@
             class="form-select form-select-lg"
             aria-label="Default select example" formControlName="role"
           >
-            <option selected>Choose role</option>
-            <option value="1">Admin</option>
-            <option value="2">Employ</option>
-            <option value="3">Customer</option>
+            <option class=""  selected>Choose role</option>
+            <option class="" value="1">Admin</option>
+            <option value="2" class="">Employ</option>
+            <option value="3" class="">Customer</option>
           </select>
           <div *ngIf="role?.invalid && (role?.dirty || role?.touched)"
           class="alert text-danger py-1 ms-0 ps-0">
@@ -121,7 +121,7 @@
     
       <div class="mb-2 row d-flex flex-column">
       <div class="col-sm-10" style="margin: 20px 0px 50px 0px">
-        <button type="submit" class="btn btn-primary fs-5 submit btn-lg w-100">
+        <button type="submit" class="btn   fs-5 submit btn-lg w-100">
           Create account
         </button>
       </div>
@@ -129,25 +129,29 @@
 
     </form>
 
-      <hr />
+     
 
-      <div class="btn-group my-4 d-flex gap-4">
-        <button
+      <div class="row">
+        <div class="col-sm-10 d-flex justify-content-around gap-4" style="margin: 20px 0px 50px 0px">
+          <button
           type="submit"
-          class="btn rounded-2 border fs-6 btn-primary social_facebook btn-lg w-100"
+          class="btn rounded-2 border fs-6   social-facebook btn-lg w-100"
         >
           Facebook <i class="uit uit-facebook-f"></i>
         </button>
         <button
-          type="submit"
-          class="btn fs-6 rounded-1 border btn-primary btn-lg social_google w-100"
-        >
-          Google <i class="uit uit-google"></i>
-        </button>
-      </div>
+        type="submit"
+        class="btn fs-6 rounded-1 border social-google btn-lg  w-100"
+      >
+        Google <i class="uit uit-google"></i>
+      </button>
+        </div>
+        </div>
+
+      
 
       <div class="my-2">
-        <a routerLink="/admin/login">Already have an account  Login ? </a>
+        <a routerLink="/login" class="" style="font-size: 14px;">Already have an account  Login ? </a>
       </div>
     </div>
 
