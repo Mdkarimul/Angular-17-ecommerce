@@ -12,8 +12,8 @@
     cursor: pointer;
 }
 
-@media(max-width:500px){
-    .toggle{
-        
+@media(max-width:800px){
+    .toggler{
+        display: none;
     }
 }

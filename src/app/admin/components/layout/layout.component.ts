@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { SidenavComponent } from '../sidenav/sidenav.component';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
@@ -20,20 +20,30 @@ export class LayoutComponent {
   }
   public navControllerDesk: boolean = false;
   public wWidth: number = 0;
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any) {
+    if(event.target.innerWidth < 800){
+      this.navCtrl.adminNavControll.next(true);
+    }else{
+      this.navCtrl.adminNavControll.next(false);
+    }
+  }
 
 
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
+
         this.wWidth = window.innerWidth;
         // Code that depends on window can safely run here
       }
+
+
   
   }
 
   ngAfterViewInit() {
-    this.navCtrl.navControllDesk.subscribe({
+    this.navCtrl.adminNavControll.subscribe({
       next: (data) => {
         this.navControllerDesk = data;
       },

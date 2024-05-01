@@ -8,9 +8,6 @@ export class NavControllService {
 
   constructor() { }
 
-
-public navControllDesk = new Subject<boolean>();
-
-public navControllMobile = new Subject<boolean>();
+public adminNavControll = new Subject<boolean>();
 
 }

@@ -5,6 +5,7 @@ import { LayoutComponent } from './admin/components/layout/layout.component';
 import { HomeComponent } from './portal/home/home/home.component';
 import { CategoryComponent } from './admin/components/categories/category/category.component';
 import { OverviewComponent } from './admin/components/overview/overview.component';
+import { authGuard } from './admin/guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -23,6 +24,7 @@ export const routes: Routes = [
             {
                 path:'dashboard',
                 component:LayoutComponent,
+                canActivate:[authGuard],
                 children: [
                     {
                         path:'',

@@ -12,15 +12,12 @@ export class HeaderComponent {
 
   constructor(private navCtrl:NavControllService) {}
 
-  public navController:boolean = false;
-  controllNav() {
-  
-      this.navController = !this.navController;
-      
-      this.navCtrl.navControllDesk.next(this.navController);
- 
+  private navController:boolean = false;
 
-    
+
+  controllNav() {
+      this.navController = !this.navController;
+      this.navCtrl.adminNavControll.next(this.navController);
   }
 
 }

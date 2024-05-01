@@ -1,8 +1,9 @@
 import { JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavControllService } from '../../services/nav-controll.service';
 import { throws } from 'assert';
+import { AuthapiService } from '../../services/authapi.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -13,16 +14,13 @@ import { throws } from 'assert';
 })
 export class SidenavComponent {
 
+  private authService = inject(AuthapiService);
 constructor(private navCtrl:NavControllService) {
 
 
 }
 
-
-
 public navController :boolean = false;
-
-
 // @HostListener('window:resize', ['$event'])
 // onResize(event: { target: { innerWidth: any; }; }) {
 //   // Update window width when the window is resized
@@ -40,7 +38,7 @@ ngOnInit(){
 }
 
   ngAfterViewInit(){
-     this.navCtrl.navControllDesk.subscribe({
+     this.navCtrl.adminNavControll.subscribe({
       next: (data)=>{
        this.navController = data;
       }
@@ -156,6 +154,10 @@ ngOnInit(){
    return i==index;  
     })
       menu.isopen =  !menu.isopen;
+  }
+
+  logOut(){
+   this.authService.logout();
   }
 
 }

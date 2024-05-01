@@ -3,7 +3,7 @@
 
     <!-- <li  class="list-group-item custom-color-one fw-bold border-0 bg-transparent fs-4 "><i class="uil uil-shopping-bag "></i> Dashtar</li> -->
 
-     <li (click)="toggleMenu(i)" *ngFor="let menu of menus;let i=index;" [ngClass]="i==0 ? 'list-group-item main-menurder custom-color-one fw-bold d-flex justify-content-center align-items-center border-0 bg-transparent fs-4' : 'list-group-item  bg-transparent mb-1  d-flex justify-content-center align-items-center  border-0  fw-medium custom-color-three' ">
+     <li  (click)="toggleMenu(i)" *ngFor="let menu of menus;let i=index;" class="list-group-item bg-transparent d-flex" [ngClass]="i==0 ? ' main-menurder custom-color-one fw-bold  justify-content-center align-items-center border-0  fs-4' : '  mb-1   justify-content-center align-items-center  border-0  fw-medium custom-color-three' ">
       <div>
          <a *ngIf="menu.link" [routerLink]="menu.link"> 
 
@@ -15,7 +15,7 @@
       
             <!-- <ng-container *ngIf="menu.sub != 0"> -->
 <ul class="list-group submenus p-0 m-0" *ngIf="menu.isopen">
-  <li *ngFor="let submenu of menu.sub;let i=index;" class='list-group-item sub-item d-flex justify-content-center align-items-center  border-0 bg-transparent  fw-medium custom-color-three'><a [routerLink]="submenu.link"><i [class]="submenu.icon"></i> {{ navController ? '' :  submenu.label  }} </a></li>
+  <li *ngFor="let submenu of menu.sub;let i=index;" class='list-group-item sub-item d-flex justify-content-start align-items-center  border-0 bg-transparent  fw-medium custom-color-three'><a [routerLink]="submenu.link"><i [class]="submenu.icon"></i> {{ navController ? '' :  submenu.label  }} </a></li>
 </ul>
     <!-- </ng-container> -->
       </div>
@@ -44,5 +44,5 @@
 
   </ul>
 
-  <button class="btn custom-color-two logout border-0 mx-auto w-100 py-2 me-auto">{{ navController ? '' :  "logout"  }}<i class="uil uil-signout mx-2 fs-4"></i></button>
+  <button (click)="logOut()" class="btn custom-color-two logout border-0 mx-auto w-100 py-2 me-auto">{{ navController ? '' :  "logout"  }}<i class="uil uil-signout mx-2 fs-4"></i></button>
   </div>

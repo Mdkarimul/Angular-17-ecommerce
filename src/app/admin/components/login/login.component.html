@@ -56,8 +56,8 @@
 
       <div class="mb-2 row d-flex flex-column">
       <div class="col-sm-10" style="margin: 20px 0px 50px 0px">
-        <button type="submit" class="btn  fs-5 submit btn-lg w-100">
-          Login
+        <button [disabled]="btn_state" type="submit" class="btn  fs-5 submit btn-lg w-100">
+          Login <span *ngIf="btn_state">...</span>
         </button>
       </div>
       </div>
@@ -82,10 +82,14 @@
         </div>
         </div>
 
-      <div class="my-2">
+        <div class="row">
+
+        </div>
+      <div class="my-2 col-sm-10 d-flex justify-content-between">
         <a routerLink="/signup" style="font-size: 14px;" class="d-block mb-2">Create an account ?</a>
         <a routerLink="/admin/forgot" class="d-block " style="font-size: 14px;">Forgot your password</a>
       </div>
     </div>
   </div>
+  <ng-toast></ng-toast>
 </div>
