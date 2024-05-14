@@ -22,12 +22,18 @@ export class LoginComponent {
 
   constructor(private fb:FormBuilder,private auth:AuthapiService,private router:Router,private popup:PopupService){
 
+    
+
   }
 
 
+
+
+
+
   loginForm = this.fb.group({
-    email:new FormControl('',[Validators.required]),
-    password:new FormControl('',Validators.required)
+    email:new FormControl('karimul@gmail.com',[Validators.required]),
+    password:new FormControl('Md7861942@k',Validators.required)
   })
 
   get email(){
@@ -42,12 +48,14 @@ export class LoginComponent {
      this.btn_state = true;
        this.auth.login(this.loginForm.value as LoginType).subscribe({
         next:(data:any)=>{
+          console.log(data);
           this.btn_state = false;
         if(data.isLogin){
-        this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard']);
         }
         },
         error:(error)=>{
+          console.log(error);
           this.btn_state = false;
        if(Array.isArray(error.error.message)){
         this.popup.showError(error.error.message[0]);

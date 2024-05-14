@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable, retry, tap } from 'rxjs';
+import { Inject, Injectable, PLATFORM_ID, afterNextRender, inject } from '@angular/core';
+import { BehaviorSubject, Observable, Subject, retry, tap } from 'rxjs';
 import { LoginType, UserType } from '../types/auth-type';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Injectable({
@@ -10,14 +11,17 @@ import { Router } from '@angular/router';
 })
 export class AuthapiService {
 
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
 private url:string = 'http://localhost:3000/';
-public jwt_token:string = "JWT_TOKEN";
+public readonly jwt_token:string = "JWT_TOKEN";
 private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 private http = inject(HttpClient);
-private loginUser:string = '';
+private logedinUser?:string;
 private router = inject(Router);
+
+
+
   signup(data:UserType):Observable<unknown>{
   return  this.http.post<UserType>(this.url+"users/signup",data);
   }
@@ -25,16 +29,15 @@ private router = inject(Router);
   login(data:LoginType):Observable<any>{
     return this.http.post(this.url+'users/login',data).pipe(
       tap((tokens:any)=>{
-        console.log(tokens);
         this.doLoginUser(data.email,tokens.token);
-        this.isAuthenticatedSubject.next(true);
       })
     );
   }
 
   private doLoginUser(username:string,token:string){
-    this.loginUser = username;
+    this.logedinUser = username;
     this.storeJwt(token);
+    this.isAuthenticatedSubject.next(true);
   }
 
   private storeJwt(token:string){
@@ -49,7 +52,9 @@ private router = inject(Router);
   }
 
   isLogedin():boolean{
-   return this.isAuthenticatedSubject.value;
+  
+      return !!localStorage.getItem(this.jwt_token);
+   
   }
 
 }

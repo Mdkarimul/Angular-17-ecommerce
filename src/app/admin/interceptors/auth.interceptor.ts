@@ -18,5 +18,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
 
 function getJwtToken():string | null {
-  return localStorage.getItem(inject(AuthapiService).jwt_token)
+  return "jk";
+  // return localStorage.getItem(inject(AuthapiService).jwt_token)
 }
