@@ -41,8 +41,8 @@ ngOnChanges(changes:SimpleChange){
 }
 
 subCategoryForm:FormGroup = this.fb.group({
-  mainCategory:new FormControl<string>('',[Validators.required]),
-  subCategory:new FormControl<string>('',Validators.required),
+  maincategory:new FormControl<string>('',[Validators.required]),
+  subcategory:new FormControl<string>('',Validators.required),
 })
 
 get category_val(){
@@ -53,8 +53,10 @@ get sub_category_val(){
 }
 
 createNewSubCategory(event:Event){
+ 
 event.preventDefault();
 this.btn_state = true;
+console.log(this.subCategoryForm.value)
 if(this.subCategoryForm.valid){
   this.categoryServices.updateCategory(this.subCategoryForm.value as updateCategoryType).subscribe({
     next:(data)=>{
@@ -78,16 +80,14 @@ ngOnInit(): void {
   next:(data)=>{
  console.log(data);
  data.forEach((category:any)=>{
-  console.log(category);
   this.categories.push(category)
  })
- console.log(this.categories,'karimuu;');
   },
   error:(error)=>{
     console.log(error);
   },
   complete:()=>{
-    console.log("complete");
+    // console.log("complete");
   }
 })
 }

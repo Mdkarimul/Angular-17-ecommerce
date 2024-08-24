@@ -24,10 +24,10 @@
           <div class="col-md-8">
             <div class="input-group">
          
-              <select class="form-select form-select-sm mb-3" formControlName="mainCategory" aria-label=".form-select-lg example">
+              <select class="form-select form-select-sm mb-3" formControlName="maincategory" aria-label=".form-select-lg example">
                 <option selected>Select main category</option>
              
-                <option value="" *ngFor="let category of categories;let i=index">
+                <option [value]="category.category" *ngFor="let category of categories;let i=index">
                  {{ category.category }}
                 </option>
           
@@ -58,7 +58,7 @@
                 name=""
                 rows="5"
                 class="form-control bg-three border rounded-1 p-2 shadow-none"
-                formControlName="subCategory"
+                formControlName="subcategory"
                 placeholder="sub category"
                 id=""
               ></textarea>
